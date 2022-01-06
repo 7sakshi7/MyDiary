@@ -13,7 +13,7 @@ class TextFieldWidget extends StatelessWidget {
       margin: EdgeInsets.only(top: 40),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: Color(0xff22252c),
+        color: Color(0xff292b30),
         boxShadow: [
           BoxShadow(
             color: Color(0xff1d1f23),

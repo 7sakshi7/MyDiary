@@ -8,7 +8,6 @@ import 'package:sahayak/screens/login_screen.dart';
 import 'package:sahayak/widgets/textfield.dart';
 import 'package:provider/provider.dart';
 
-
 class SignUpScreen extends StatefulWidget {
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -45,12 +44,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   postDetails() async {
     print('Inside post details');
-   
+
     Navigator.pushAndRemoveUntil(
         (context),
-        MaterialPageRoute(builder: (context) => VerifyScreen(username: usernameController.text,)),
+        MaterialPageRoute(
+            builder: (context) => VerifyScreen(
+                  username: usernameController.text,
+                )),
         (route) => false);
-   
 
     // Fluttertoast.showToast(
     //     msg:
@@ -97,180 +98,197 @@ class _SignUpScreenState extends State<SignUpScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color(0xFF14181d),
+      backgroundColor: Color(0xFF101010),
       body: SafeArea(
-        child: Stack(
-          children: [
-            Positioned(
-              right: 0,
-              top: 0,
-              child: SingleChildScrollView(
-                child: Container(
-                  width: width - (width / 8),
-                  height: height - (height / 8),
-                  color: Color(0xff22252c),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        // ---------------------------Username Text Field-------------------------
-                        TextFieldWidget(
-                          length: 100,
-                          child: TextFormField(
-                            autofocus: false,
-                            controller: usernameController,
-                            onSaved: (value) {
-                              usernameController.text = value.toString();
-                            },
-                            style: TextStyle(color: Colors.white),
-                            textInputAction: TextInputAction.next,
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.mail,
-                                color: Colors.grey,
-                              ),
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(20, 15, 20, 15),
-                              hintText: 'Username',
-                              hintStyle: TextStyle(color: Colors.white),
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                            ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              width: width - (width / 8),
+              height: height - (height / 6),
+              decoration: BoxDecoration(
+                  color: Color(0xff171717),
+                  borderRadius: BorderRadius.circular(20.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black,
+                      // spreadRadius: 2.0,
+                      blurRadius: 4.0,
+                      blurStyle: BlurStyle.outer,
+                    )
+                  ]),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // ---------------------------Username Text Field-------------------------
+                    TextFieldWidget(
+                      length: 100,
+                      child: TextFormField(
+                        autofocus: false,
+                        controller: usernameController,
+                        onSaved: (value) {
+                          usernameController.text = value.toString();
+                        },
+                        style: TextStyle(color: Colors.white),
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hoverColor: Color(0xffb916d8),
+                          prefixIcon: Icon(
+                            Icons.mail,
+                            color: Colors.grey,
+                          ),
+                          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                          hintText: 'Username',
+                          hintStyle: TextStyle(color: Colors.white),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
+                      ),
+                    ),
 
-                        // ---------------------------Email Text Field-------------------------
-                        TextFieldWidget(
-                          length: 100,
-                          child: TextFormField(
-                            autofocus: false,
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (value) {
-                              if (value == "") {
-                                return ("Please Enter Your Email");
-                              }
-                              var pattern =
-                                  r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-                                  r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-                                  r"{0,253}[a-zA-Z0-9])?)*$";
-                              RegExp regex = new RegExp(pattern);
-                              if (!regex.hasMatch(value.toString())) {
-                                return ("Enter Valid Email");
-                              } else
-                                return null;
-                            },
-                            onSaved: (value) {
-                              emailController.text = value.toString();
-                            },
-                            style: TextStyle(color: Colors.white),
-                            textInputAction: TextInputAction.next,
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.mail,
-                                color: Colors.grey,
-                              ),
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(20, 15, 20, 15),
-                              hintText: 'Email',
-                              hintStyle: TextStyle(color: Colors.white),
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                            ),
+                    // ---------------------------Email Text Field-------------------------
+                    TextFieldWidget(
+                      length: 100,
+                      child: TextFormField(
+                        autofocus: false,
+                        controller: emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == "") {
+                            return ("Please Enter Your Email");
+                          }
+                          var pattern =
+                              r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+                              r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+                              r"{0,253}[a-zA-Z0-9])?)*$";
+                          RegExp regex = new RegExp(pattern);
+                          if (!regex.hasMatch(value.toString())) {
+                            return ("Enter Valid Email");
+                          } else
+                            return null;
+                        },
+                        onSaved: (value) {
+                          emailController.text = value.toString();
+                        },
+                        style: TextStyle(color: Colors.white),
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.mail,
+                            color: Colors.grey,
+                          ),
+                          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                          hintText: 'Email',
+                          hintStyle: TextStyle(color: Colors.white),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
+                      ),
+                    ),
 
-                        // ---------------------------Password Text Field-------------------------
-                        TextFieldWidget(
-                          length: 100,
-                          child: TextFormField(
-                            autofocus: false,
-                            obscureText: true,
-                            controller: passwordController,
-                            style: TextStyle(color: Colors.white),
-                            validator: (value) {
-                              if (value == "") {
-                                return ("password is required");
-                              }
+                    // ---------------------------Password Text Field-------------------------
+                    TextFieldWidget(
+                      length: 100,
+                      child: TextFormField(
+                        autofocus: false,
+                        obscureText: true,
+                        controller: passwordController,
+                        style: TextStyle(color: Colors.white),
+                        validator: (value) {
+                          if (value == "") {
+                            return ("password is required");
+                          }
 
-                              if (!RegExp('(?=.*?[#?!@\$%^&*-])')
-                                  .hasMatch(value.toString())) {
-                                return ("passwords must have at least one special character");
-                              } else
-                                return null;
-                            },
-                            onSaved: (value) {
-                              passwordController.text = value.toString();
-                            },
-                            textInputAction: TextInputAction.done,
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.vpn_key,
-                                color: Colors.grey,
-                              ),
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(20, 15, 20, 15),
-                              hintText: 'Password',
-                              hintStyle: TextStyle(color: Colors.white),
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                            ),
+                          if (!RegExp('(?=.*?[#?!@\$%^&*-])')
+                              .hasMatch(value.toString())) {
+                            return ("passwords must have at least one special character");
+                          } else
+                            return null;
+                        },
+                        onSaved: (value) {
+                          passwordController.text = value.toString();
+                        },
+                        textInputAction: TextInputAction.done,
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.vpn_key,
+                            color: Colors.grey,
+                          ),
+                          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                          hintText: 'Password',
+                          hintStyle: TextStyle(color: Colors.white),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
+                      ),
+                    ),
 
-                        GestureDetector(
-                          onTap: () {
-                            signup(
-                                emailController.text, passwordController.text);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(top: 30, bottom: 20.0),
-                            decoration: BoxDecoration(
-                              color: Color(0xFF181F29),
-                              borderRadius: BorderRadius.circular(23.0),
-                            ),
-                            width: 200,
-                            height: 50,
-                            padding: EdgeInsets.only(top: 10.0),
-                            child: Text('Sign Up',
+                    GestureDetector(
+                      onTap: () {
+                        signup(emailController.text, passwordController.text);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: 30, bottom: 20.0),
+                        decoration: BoxDecoration(
+                          // color: Color(0xFF181F29),
+                          gradient: const LinearGradient(
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                            colors: [
+                              Color(0xffb816dc),
+                              Color(0xffce23b1),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(23.0),
+                        ),
+                        width: 200,
+                        height: 50,
+                        // padding: EdgeInsets.only(top: 10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const [
+                            Text('Sign Up',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 23.0,
                                 ),
                                 textAlign: TextAlign.center),
-                          ),
+                            Icon(
+                              Icons.arrow_right_alt_outlined,
+                              color: Colors.white,
+                              size: 30.0,
+                            )
+                          ],
                         ),
-                        // --------------------------Links----------------------------------------
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()),
-                            );
-                          },
-                          child: const Text(
-                            'Already Have An Account?',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              // color: Color(0xffa664f7),
-                            ),
-                          ),
-                        )
-                      ],
+                      ),
                     ),
-                  ),
+                    // --------------------------Links----------------------------------------
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
+                        );
+                      },
+                      child: const Text(
+                        'Already Have An Account?',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          // color: Color(0xffa664f7),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

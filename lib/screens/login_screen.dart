@@ -10,7 +10,6 @@ import 'package:sahayak/screens/signup_screen.dart';
 import 'package:sahayak/widgets/textfield.dart';
 import 'package:provider/provider.dart';
 
-
 class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   bool selected = false;
@@ -34,13 +33,15 @@ class LoginScreen extends StatelessWidget {
         querySnapshot.docs.forEach((result) {
           print(result.id);
           var data = result.data();
-          if(data["uid"].toString() == uid.toString()){
+          if (data["uid"].toString() == uid.toString()) {
             print('entered');
-            _firestore.collection('userDetails').doc(result.id).update({"login":true});
+            _firestore
+                .collection('userDetails')
+                .doc(result.id)
+                .update({"login": true});
             print(data["login"]);
             return;
           }
-          
         });
       });
     }
@@ -99,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                           clipper: MyWaveClipper(),
                           child: Container(
                             decoration: const BoxDecoration(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF171717),
                             ),
                             width: 900,
                             height: 300,
@@ -113,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                           child: Column(
                             children: const [
                               Icon(
-                                Icons.location_on_outlined,
+                                Icons.list_alt,
                                 color: Colors.white,
                                 size: 100.0,
                               ),
@@ -243,19 +244,6 @@ class LoginScreen extends StatelessWidget {
                           ],
                         ),
 
-                        const Text(
-                          '-----OR----',
-                          style: TextStyle(color: Colors.white),
-                        ),
-
-                        GestureDetector(
-                          child: Image.asset("assets/images/google.png"),
-                          // onTap: () {
-                          //   Provider.of<LoginController>(context, listen: false)
-                          //       .googleLogin();
-                          // },
-                        ),
-
                         // ---------------------------Login Button---------------------------------
                         GestureDetector(
                           onTap: () {
@@ -267,6 +255,14 @@ class LoginScreen extends StatelessWidget {
                             margin: EdgeInsets.only(top: 30, bottom: 20.0),
                             decoration: BoxDecoration(
                               color: Color(0xFF181F29),
+                              gradient: const LinearGradient(
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                                colors: [
+                                  Color(0xffb816dc),
+                                  Color(0xffce23b1),
+                                ],
+                              ),
                               borderRadius: BorderRadius.circular(23.0),
                             ),
                             width: 200,

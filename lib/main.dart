@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:sahayak/screens/home_screen.dart';
 import 'package:sahayak/screens/loading_screen.dart';
 import 'package:sahayak/screens/login_screen.dart';
+import 'package:sahayak/screens/signup_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     _firestore.collection('userDetails').get().then((querySnapshot) {
       querySnapshot.docs.forEach((result) {
         var data = result.data();
-        if (data["uid"].toString() == uid.toString() && data["login"]==true) {
+        if (data["uid"].toString() == uid.toString() && data["login"] == true) {
           setState(() {
             isloggedIn = true;
           });
@@ -44,16 +45,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // MultiProvider(
-        //   providers: [
-        //     ChangeNotifierProvider(
-        //       create: (context) => LoginController(),
-        //       child: LoginScreen(),
-        //     )
-        //   ],
-        //   child:
-        MaterialApp(
+    return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: Color(0xff07080d)),
       // theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Color.fromARGB(61, 0, 0, 0),),
       home: notFound == 0
