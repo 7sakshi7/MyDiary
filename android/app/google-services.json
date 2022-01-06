@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "647183539080",
+    "project_id": "my-diary-28997",
+    "storage_bucket": "my-diary-28997.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647183539080:android:2b0871107d8a953962f83d",
+        "android_client_info": {
+          "package_name": "com.example.sahayak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647183539080-a6u0r8qjbdb7jb4nmmea2b54tqljpgv3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUaXMLTmEH9Jyoa6Gxe8RK5FYpNnBQOPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647183539080-a6u0r8qjbdb7jb4nmmea2b54tqljpgv3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
